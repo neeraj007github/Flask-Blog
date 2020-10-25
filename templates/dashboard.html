@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/16.jpg')}}')">
+  <!--img src="https://source.unsplash.com/random/100*100" -->
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Sky Fall</h1>
+          <span class="subheading">Come and see the magic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h3 style="display: inline">
+
+        Welcom to Admin Block
+        <a style="float: right " href="/logout"> <button type="button" class="btn btn-primary">Logout</button>
+      </h3>
+      <hr>
+
+      <form class="btn btn-primary" action="/uploader" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" />
+      </form>
+      <h6>Upload a file</h6>
+      <a style="float: left" href="/add_post"> <button type="button" class="btn btn-primary">Add a new Posts</button>
+      </a>
+      <!-- '{{ conf["params"]["admin_user"]}} ' -->
+      <!-- <h4 style="text-align: center"> Add a new Posts</h4> -->
+
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sno.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Posted By</th>
+            <th scope="col">Date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for posts in post -%}
+          <tr>
+            <th scope="row">{{posts.sno}}</th>
+            <!--<td>{{posts.sno}}</td>-->
+            <td>{{posts.title}}</td>
+            <td>{{posts.Posted_By}}</td>
+            <td>{{posts.date}}</td>
+            <td><a href="/edit/{{posts.sno}}"> <button type="button" class="btn btn-primary">Edit</button></td>
+            </a>
+            
+              <td><a href="/delete/{{posts.sno}}"><button type="button" class="btn btn-primary">Delete</button></a></td>
+            
+            {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- Pager -->
+      <div class="clearfix">
+        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

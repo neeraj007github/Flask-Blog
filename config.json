@@ -1,0 +1,20 @@
+{
+	"params" :
+	{
+	"local_server":"True",
+	"local_uri":"mysql://root:@localhost/first_web",
+	"prod_uri":"mysql://root:@localhost/first_web",
+	"title": "this is test",
+	"tw_url":"https://twitter.com",
+	"fb_url": "https://facebook.com",
+	"gt_url":"https://github.com",
+	"no_of_post":3,
+	"admin_user": "neeraj"	,
+	"admin_password": "patel",
+	"background_image":"6.jpg"
+
+
+	}
+
+
+}

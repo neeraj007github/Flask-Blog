@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+  <!-- Page Header -->
+  {% set fname='img/' + conf["params"]["background_image"] %}
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/11.jpg'  )}}')">
+    <!--img src="https://source.unsplash.com/random/100*100" -->
+    <div class="overlay" ></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Sky Fall</h1>
+            <span class="subheading">Come and see the magic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+          {% for posts in post -%}
+          
+          
+        <div class="post-preview">
+          <a href="/post/{{posts.slug}}">
+            <h2 class="post-title">
+              {{posts.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{posts.content[0:100]}}...
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">{{posts.Posted_By}}</a>
+            {{posts.date}}</p>
+        </div>
+        {% endfor %}
+        
+        <!-- Pager -->
+        <div class="clearfix">
+            <a class="btn btn-primary float-left" href="{{prev}}">&larr;previous Posts </a>
+          <a class="btn btn-primary float-right" href="{{next}}">next Posts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+{% endblock %}

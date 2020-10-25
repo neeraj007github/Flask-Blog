@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block body %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/16.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Welcome {{conf["params"]["admin_user"]}}</h1>
+                    <span class="subheading">Say you mind</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <form name="sentMessage" id="contactForm" action="/edit/{{post.sno}}" method="POST" novalidate>
+
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Title </label>
+                        <input type="text" class="form-control"  id="title" name=title value="{{post.title}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Detail</label>
+                        <textarea rows="5" class="form-control" value="{{post.content}}" id="content" name=content
+                            >{{post.content}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Name </label>
+                        <input type="text" class="form-control" value="{{post.Posted_By}}" id="name" name=posted_by
+                            >
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>slug</label>
+                        <input type="text" class="form-control" value="{{post.slug}}" id="slug" name=slug required
+                            data-validation-required-message="Please enter your name.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Background Image</label>
+                        <input type="text" class="form-control" value="{{post.img_file}}" id="phone" name=img_file
+                            required data-validation-required-message="Please enter your phone number.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+
+                <br>
+                <div id="success"></div>
+                <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+            </form>
+        </div>
+    </div>
+</div> {% endblock %}
